@@ -15,12 +15,11 @@ func getFirstLastCombo(word string, numberMap map[string]int) int {
 	var numberWord string
 	fmt.Println("\n\n" + word)
 	for i := 0; i < len(word); i++ {
-		fmt.Println(numberWord)
 		numberWord += string(word[i])
 		if unicode.IsDigit(rune(word[i])) {
 			first = int(word[i]-'0') * 10
 			break
-		} else if substring, found := findSubstringInMap(word, numberMap); found {
+		} else if substring, found := findSubstringInMap(numberWord, numberMap); found {
 			first = numberMap[substring] * 10
 			break
 		}
